@@ -1,10 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import type { Service } from "@/data/services";
+import { servicePath, type Service } from "@/data/services";
 
 const ServiceCard = ({ service }: { service: Service }) => (
   <Link
-    to={`/services/${service.slug}`}
+    to={servicePath(service)}
     className="group flex flex-col bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl p-7 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/40 transition-all duration-300"
   >
     <div className="flex items-start justify-between mb-6">

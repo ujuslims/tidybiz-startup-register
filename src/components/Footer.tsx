@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { registrationServices, brandServices } from '@/data/services';
+import { registrationServices, brandServices, servicePath } from '@/data/services';
 
 const Footer = () => {
   return (
@@ -21,11 +21,13 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">Register</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">
+              <Link to="/registration" className="hover:text-white transition-colors">Register</Link>
+            </h4>
             <ul className="space-y-2 text-sm">
               {registrationServices.map((s) => (
                 <li key={s.slug}>
-                  <Link to={`/services/${s.slug}`} className="text-slate-400 hover:text-white transition-colors">
+                  <Link to={servicePath(s)} className="text-slate-400 hover:text-white transition-colors">
                     {s.shortTitle}
                   </Link>
                 </li>
@@ -34,11 +36,13 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">Brand</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">
+              <Link to="/branding" className="hover:text-white transition-colors">Brand</Link>
+            </h4>
             <ul className="space-y-2 text-sm">
               {brandServices.map((s) => (
                 <li key={s.slug}>
-                  <Link to={`/services/${s.slug}`} className="text-slate-400 hover:text-white transition-colors">
+                  <Link to={servicePath(s)} className="text-slate-400 hover:text-white transition-colors">
                     {s.shortTitle}
                   </Link>
                 </li>
@@ -83,7 +87,8 @@ const Footer = () => {
           </p>
           <div className="flex gap-6 text-sm">
             <Link to="/resources" className="text-slate-500 hover:text-white transition-colors">Resources</Link>
-            <Link to="/services" className="text-slate-500 hover:text-white transition-colors">All Services</Link>
+            <Link to="/registration" className="text-slate-500 hover:text-white transition-colors">Registration</Link>
+            <Link to="/branding" className="text-slate-500 hover:text-white transition-colors">Branding</Link>
             <Link to="/contact" className="text-slate-500 hover:text-white transition-colors">Contact</Link>
           </div>
         </div>

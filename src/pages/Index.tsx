@@ -37,7 +37,7 @@ const homeFaqs = [
 
 const Index = () => {
   const featured = services.filter((s) =>
-    ['company-registration', 'business-name-registration', 'tax-registration', 'branding', 'logo-design', 'website-design'].includes(s.slug),
+    ['company-registration', 'business-name-registration', 'tax-registration', 'brand-identity', 'logo-design', 'website-design'].includes(s.slug),
   );
 
   return (
@@ -82,12 +82,19 @@ const Index = () => {
               <ServiceCard key={service.slug} service={service} />
             ))}
           </div>
-          <div className="text-center mt-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
             <Link
-              to="/services"
+              to="/registration"
               className="group inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors"
             >
-              View all services
+              Explore Registration
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              to="/branding"
+              className="group inline-flex items-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full font-bold hover:border-primary hover:text-primary transition-colors"
+            >
+              Explore Branding
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

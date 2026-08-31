@@ -4,7 +4,7 @@ import Seo from '@/components/Seo';
 import SectionHeading from '@/components/site/SectionHeading';
 import FaqList from '@/components/site/FaqList';
 import CtaSection from '@/components/site/CtaSection';
-import { services } from '@/data/services';
+import { services, servicePath } from '@/data/services';
 
 const bundles = [
   {
@@ -120,7 +120,7 @@ const Pricing = () => (
           {services.map((s) => (
             <Link
               key={s.slug}
-              to={`/services/${s.slug}`}
+              to={servicePath(s)}
               className="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 p-6 hover:bg-slate-50 transition-colors"
             >
               <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">

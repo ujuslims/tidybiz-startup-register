@@ -1,14 +1,19 @@
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { registrationServices, brandServices } from '@/data/services';
+import { registrationServices, brandServices, servicePath } from '@/data/services';
+
+/** Two pillar dropdowns (Registration, Branding) plus the site's other top-level pages. */
+const pillars = [
+  { label: 'Registration', to: '/registration', services: registrationServices },
+  { label: 'Branding', to: '/branding', services: brandServices },
+] as const;
 
 const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
-  { label: 'Services', to: '/services' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Resources', to: '/resources' },
+  { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
 
@@ -33,52 +38,62 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
-            {navItems.map((item) => (
-              <div key={item.to} className={item.to === '/services' ? 'relative group' : ''}>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `inline-flex items-center gap-1 transition-colors hover:text-primary ${isActive ? 'text-primary' : ''}`
+              }
+            >
+              Home
+            </NavLink>
+
+            {pillars.map((pillar) => (
+              <div key={pillar.to} className="relative group">
                 <NavLink
-                  to={item.to}
-                  end={item.to === '/'}
+                  to={pillar.to}
                   className={({ isActive }) =>
                     `inline-flex items-center gap-1 transition-colors hover:text-primary ${
                       isActive ? 'text-primary' : ''
                     }`
                   }
                 >
-                  {item.label}
-                  {item.to === '/services' && <ChevronDown size={14} />}
+                  {pillar.label}
+                  <ChevronDown size={14} />
                 </NavLink>
 
-                {item.to === '/services' && (
-                  <div className="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[34rem]">
-                    <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-300/40 p-6 grid grid-cols-2 gap-6">
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Register</p>
-                        <ul className="space-y-2">
-                          {registrationServices.map((s) => (
-                            <li key={s.slug}>
-                              <Link to={`/services/${s.slug}`} className="text-slate-600 hover:text-primary transition-colors">
-                                {s.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Brand</p>
-                        <ul className="space-y-2">
-                          {brandServices.map((s) => (
-                            <li key={s.slug}>
-                              <Link to={`/services/${s.slug}`} className="text-slate-600 hover:text-primary transition-colors">
-                                {s.shortTitle}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+                <div className="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 absolute left-1/2 -translate-x-1/2 top-full pt-4 w-72">
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-300/40 p-6">
+                    <Link
+                      to={pillar.to}
+                      className="block text-xs font-bold uppercase tracking-widest text-primary mb-3 hover:underline"
+                    >
+                      {pillar.label} overview →
+                    </Link>
+                    <ul className="space-y-2">
+                      {pillar.services.map((s) => (
+                        <li key={s.slug}>
+                          <Link to={servicePath(s)} className="text-slate-600 hover:text-primary transition-colors">
+                            {s.shortTitle}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                )}
+                </div>
               </div>
+            ))}
+
+            {navItems.slice(1).map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `inline-flex items-center gap-1 transition-colors hover:text-primary ${isActive ? 'text-primary' : ''}`
+                }
+              >
+                {item.label}
+              </NavLink>
             ))}
           </nav>
 
@@ -107,28 +122,37 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-slate-100 max-h-[75vh] overflow-y-auto">
             <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
+              <NavLink to="/" end className="text-slate-700 hover:text-primary transition-colors font-medium">
+                Home
+              </NavLink>
+
+              {pillars.map((pillar) => (
+                <div key={pillar.to} className="pt-2 border-t border-slate-100">
+                  <Link to={pillar.to} className="text-slate-900 hover:text-primary transition-colors font-bold">
+                    {pillar.label}
+                  </Link>
+                  <ul className="space-y-2 mt-3">
+                    {pillar.services.map((s) => (
+                      <li key={s.slug}>
+                        <Link to={servicePath(s)} className="text-slate-600 hover:text-primary transition-colors text-sm">
+                          {s.shortTitle}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
+              {navItems.slice(1).map((item) => (
                 <NavLink
                   key={item.to}
                   to={item.to}
-                  end={item.to === '/'}
-                  className="text-slate-700 hover:text-primary transition-colors font-medium"
+                  className="text-slate-700 hover:text-primary transition-colors font-medium pt-2 border-t border-slate-100"
                 >
                   {item.label}
                 </NavLink>
               ))}
-              <div className="pt-2 border-t border-slate-100">
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-400 my-3">All Services</p>
-                <ul className="space-y-3">
-                  {[...registrationServices, ...brandServices].map((s) => (
-                    <li key={s.slug}>
-                      <Link to={`/services/${s.slug}`} className="text-slate-600 hover:text-primary transition-colors text-sm">
-                        {s.shortTitle}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
               <Link
                 to="/contact"
                 className="bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary transition-colors text-center"

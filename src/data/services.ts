@@ -266,7 +266,7 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "branding",
+    slug: "brand-identity",
     category: "Brand",
     title: "Brand Identity & Strategy",
     shortTitle: "Branding",
@@ -385,3 +385,11 @@ export const getService = (slug?: string) => services.find((s) => s.slug === slu
 
 export const registrationServices = services.filter((s) => s.category === "Registration");
 export const brandServices = services.filter((s) => s.category === "Brand");
+
+/** Pillar base path for a category — the two-pillar site structure. */
+export const categoryPath = (category: Service["category"]) =>
+  category === "Registration" ? "/registration" : "/branding";
+
+/** Canonical URL for a single service, nested under its pillar. */
+export const servicePath = (service: Pick<Service, "slug" | "category">) =>
+  `${categoryPath(service.category)}/${service.slug}`;
