@@ -10,7 +10,7 @@ const guides = [
     icon: FileText,
     title: 'Business name vs limited company',
     description: 'Which CAC entity fits your stage, liability exposure and funding plans — with a side-by-side cost comparison.',
-    to: '/registration/company-registration',
+    to: '/services/company-registration',
     cta: 'Compare on our registration page',
   },
   {
@@ -24,7 +24,7 @@ const guides = [
     icon: BookOpen,
     title: 'Your first-year compliance checklist',
     description: 'Annual returns, VAT filings, tax clearance and register upkeep — with the deadlines that trip founders up.',
-    to: '/registration/business-compliance',
+    to: '/services/business-compliance',
     cta: 'Read the compliance service',
   },
 ];

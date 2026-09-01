@@ -37,7 +37,7 @@ const homeFaqs = [
 
 const Index = () => {
   const featured = services.filter((s) =>
-    ['company-registration', 'business-name-registration', 'tax-registration', 'brand-identity', 'logo-design', 'website-design'].includes(s.slug),
+    ['company-registration', 'business-name-registration', 'tax-registration', 'branding', 'logo-design', 'website-design'].includes(s.slug),
   );
 
   return (

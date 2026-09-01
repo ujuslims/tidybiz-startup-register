@@ -66,7 +66,7 @@ const Hero = () => {
               ))}
             </ul>
             <Link
-              to="/registration/company-registration"
+              to="/services/company-registration"
               className="w-full py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all flex items-center justify-center group/btn"
             >
               View service
@@ -94,7 +94,7 @@ const Hero = () => {
               ))}
             </ul>
             <Link
-              to="/branding/brand-identity"
+              to="/services/branding"
               className="w-full py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:opacity-90 transition-all flex items-center justify-center group/btn"
             >
               View service
