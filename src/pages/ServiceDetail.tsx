@@ -51,7 +51,7 @@ const ServiceDetail = () => {
           <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight size={14} />
-            <Link to={categoryPath(service.category)} className="hover:text-primary transition-colors">{pillarLabel}</Link>
+            <Link to="/services" className="hover:text-primary transition-colors">{pillarLabel}</Link>
             <ChevronRight size={14} />
             <span className="text-slate-900 font-medium">{service.shortTitle}</span>
           </nav>
