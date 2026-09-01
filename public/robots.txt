@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tidybiz-startup-register.lovable.app/sitemap.xml
+Sitemap: https://tidybiz-startup-register.netlify.app/sitemap.xml

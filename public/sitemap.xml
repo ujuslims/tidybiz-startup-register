@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tidybiz-startup-register.lovable.app/</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/about</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/pricing</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/resources</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/contact</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/company-registration</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/business-name-registration</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/tax-registration</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/business-compliance</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/trademark-registration</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/branding</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/logo-design</loc></url>
-  <url><loc>https://tidybiz-startup-register.lovable.app/services/website-design</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/about</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/registration</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/branding</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/pricing</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/resources</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/contact</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/registration/company-registration</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/registration/business-name-registration</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/registration/tax-registration</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/registration/business-compliance</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/registration/trademark-registration</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/branding/brand-identity</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/branding/logo-design</loc></url>
+  <url><loc>https://tidybiz-startup-register.netlify.app/branding/website-design</loc></url>
 </urlset>
