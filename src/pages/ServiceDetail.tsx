@@ -5,23 +5,17 @@ import SectionHeading from '@/components/site/SectionHeading';
 import FaqList from '@/components/site/FaqList';
 import CtaSection from '@/components/site/CtaSection';
 import ServiceCard from '@/components/site/ServiceCard';
-import { getService, services, servicePath, categoryPath, type Service } from '@/data/services';
+import { getService, services, servicePath, categoryPath } from '@/data/services';
 
-type ServiceDetailProps = {
-  /** Which pillar this route belongs to — /registration/:slug vs /branding/:slug. */
-  category: Service['category'];
-};
-
-const ServiceDetail = ({ category }: ServiceDetailProps) => {
+const ServiceDetail = () => {
   const { slug } = useParams();
   const service = getService(slug);
 
-  // 404 if the slug doesn't exist, or exists under the other pillar (wrong URL for this service).
-  if (!service || service.category !== category) return <Navigate to={categoryPath(category)} replace />;
+  if (!service) return <Navigate to="/services" replace />;
 
   const related = services.filter((s) => s.slug !== service.slug && s.category === service.category).slice(0, 3);
   const path = servicePath(service);
-  const pillarLabel = service.category === 'Registration' ? 'Registration' : 'Branding';
+  const pillarLabel = 'Services';
 
   return (
     <>
@@ -57,7 +51,7 @@ const ServiceDetail = ({ category }: ServiceDetailProps) => {
           <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight size={14} />
-            <Link to={categoryPath(service.category)} className="hover:text-primary transition-colors">{pillarLabel}</Link>
+            <Link to="/services" className="hover:text-primary transition-colors">{pillarLabel}</Link>
             <ChevronRight size={14} />
             <span className="text-slate-900 font-medium">{service.shortTitle}</span>
           </nav>

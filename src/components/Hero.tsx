@@ -21,7 +21,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/registration"
+              to="/services"
               className="group inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors"
             >
               Explore our services
@@ -66,7 +66,7 @@ const Hero = () => {
               ))}
             </ul>
             <Link
-              to="/registration/company-registration"
+              to="/services/company-registration"
               className="w-full py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all flex items-center justify-center group/btn"
             >
               View service
@@ -94,7 +94,7 @@ const Hero = () => {
               ))}
             </ul>
             <Link
-              to="/branding/brand-identity"
+              to="/services/branding"
               className="w-full py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:opacity-90 transition-all flex items-center justify-center group/btn"
             >
               View service
