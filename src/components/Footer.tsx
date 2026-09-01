@@ -22,7 +22,7 @@ const Footer = () => {
 
           <div className="space-y-4">
             <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">
-              <Link to="/registration" className="hover:text-white transition-colors">Register</Link>
+              <Link to="/services" className="hover:text-white transition-colors">Register</Link>
             </h4>
             <ul className="space-y-2 text-sm">
               {registrationServices.map((s) => (
@@ -37,7 +37,7 @@ const Footer = () => {
 
           <div className="space-y-4">
             <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">
-              <Link to="/branding" className="hover:text-white transition-colors">Brand</Link>
+              <Link to="/services" className="hover:text-white transition-colors">Brand</Link>
             </h4>
             <ul className="space-y-2 text-sm">
               {brandServices.map((s) => (
@@ -87,8 +87,8 @@ const Footer = () => {
           </p>
           <div className="flex gap-6 text-sm">
             <Link to="/resources" className="text-slate-500 hover:text-white transition-colors">Resources</Link>
-            <Link to="/registration" className="text-slate-500 hover:text-white transition-colors">Registration</Link>
-            <Link to="/branding" className="text-slate-500 hover:text-white transition-colors">Branding</Link>
+            <Link to="/services" className="text-slate-500 hover:text-white transition-colors">Registration</Link>
+            <Link to="/services" className="text-slate-500 hover:text-white transition-colors">Branding</Link>
             <Link to="/contact" className="text-slate-500 hover:text-white transition-colors">Contact</Link>
           </div>
         </div>

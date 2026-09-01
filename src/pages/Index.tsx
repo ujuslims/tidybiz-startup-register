@@ -84,14 +84,14 @@ const Index = () => {
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
             <Link
-              to="/registration"
+              to="/services"
               className="group inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors"
             >
               Explore Registration
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              to="/branding"
+              to="/services"
               className="group inline-flex items-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full font-bold hover:border-primary hover:text-primary transition-colors"
             >
               Explore Branding
