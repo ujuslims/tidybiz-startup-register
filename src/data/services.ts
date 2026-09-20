@@ -7,6 +7,11 @@ import {
   Palette,
   PenTool,
   Globe,
+  Compass,
+  ClipboardCheck,
+  RefreshCw,
+  Users,
+  Archive,
   type LucideIcon,
 } from "lucide-react";
 
@@ -20,7 +25,9 @@ export type ServicePackage = {
 
 export type Service = {
   slug: string;
-  category: "Registration" | "Brand";
+  category: "Registration" | "Compliance" | "Brand";
+  /** True for services priced by a live estimator rather than fixed packages (e.g. annual returns). */
+  hasEstimator?: boolean;
   title: string;
   shortTitle: string;
   tagline: string;
@@ -38,6 +45,81 @@ export type Service = {
 };
 
 export const services: Service[] = [
+  {
+    slug: "pre-registration-advisory",
+    category: "Registration",
+    title: "Before You Register: Business Advisory",
+    shortTitle: "Pre-Registration Advisory",
+    tagline: "Think it through before you file anything with the CAC",
+    summary:
+      "Business plan input, market research and feasibility guidance before you register — including help understanding your options for accepting payments from customers abroad.",
+    icon: Compass,
+    startingPrice: "From consultation",
+    timeline: "By consultation",
+    metaTitle: "Business Plan & Pre-Registration Advisory in Nigeria — TidyBiz",
+    metaDescription:
+      "Before you register with the CAC: business plan input, market research, feasibility guidance and advice on accepting international payments for your Nigerian business.",
+    heroPoints: [
+      "Business plan & feasibility input",
+      "Market research grounded in the Nigerian context",
+      "Guidance on accepting payments from customers abroad",
+    ],
+    benefits: [
+      {
+        title: "Register the right structure the first time",
+        description:
+          "Choosing between a Business Name and a Limited Company upfront avoids an expensive, time-consuming conversion later.",
+      },
+      {
+        title: "Know your market before you commit",
+        description: "Light feasibility and market research grounded in what actually sells in Nigeria today.",
+      },
+      {
+        title: "Understand your payment options",
+        description:
+          "If you're building an online business, consulting practice or training service, we'll walk you through your options for accepting payment from customers outside Nigeria and what fits your situation — not a guarantee of any specific platform, since eligibility and onboarding rules sit entirely with the providers themselves.",
+      },
+      {
+        title: "A plan you can actually use",
+        description: "Practical, written guidance — not a generic template — built around what you're setting out to do.",
+      },
+    ],
+    process: [
+      { title: "Consultation", description: "We start with a conversation about what you're building and who it's for." },
+      { title: "Research & feasibility", description: "We ground your idea in real Nigerian market conditions." },
+      { title: "Structure recommendation", description: "We advise Business Name vs. Limited Company based on your goals, not a default." },
+      { title: "Payment options walkthrough", description: "If relevant, we cover what's realistically available for collecting payment from abroad." },
+    ],
+    packages: [
+      {
+        name: "Advisory Session",
+        price: "By consultation",
+        timeline: "Scheduled call",
+        features: ["Business plan input", "Structure recommendation", "Light market research"],
+      },
+      {
+        name: "Advisory + Payments",
+        price: "By consultation",
+        timeline: "Scheduled call",
+        features: ["Everything in Advisory Session", "International payment options walkthrough", "Follow-up notes in writing"],
+        highlight: true,
+      },
+    ],
+    faqs: [
+      {
+        q: "Will you get me set up on PayPal or Stripe?",
+        a: "We advise on your options and what's realistically available for your situation — we don't promise a specific platform, since account eligibility and onboarding are controlled entirely by the payment providers themselves, not by TidyBiz.",
+      },
+      {
+        q: "Do I need this before I register?",
+        a: "It's optional, but it's the cheapest point to get your structure right — before a CAC filing fee is spent on the wrong entity type.",
+      },
+      {
+        q: "I've already registered — is this still useful?",
+        a: "Yes, particularly the payments conversation. Many founders come to us after registering, once they hit a real client who wants to pay from abroad.",
+      },
+    ],
+  },
   {
     slug: "company-registration",
     category: "Registration",
@@ -190,44 +272,6 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "business-compliance",
-    category: "Registration",
-    title: "Business Compliance & Annual Returns",
-    shortTitle: "Business Compliance",
-    tagline: "Stay in good standing with the CAC all year round",
-    summary:
-      "Annual returns, post-incorporation changes, statutory registers and compliance monitoring so your company never falls out of good standing.",
-    icon: ShieldCheck,
-    startingPrice: "₦50,000",
-    timeline: "Ongoing / 5–10 days per filing",
-    metaTitle: "CAC Annual Returns & Business Compliance Nigeria — TidyBiz",
-    metaDescription:
-      "Keep your Nigerian company compliant: CAC annual returns, director changes, share transfers, statutory registers and a managed compliance calendar. From ₦50,000.",
-    heroPoints: ["CAC annual returns filed on time", "Post-incorporation changes handled", "Managed compliance calendar"],
-    benefits: [
-      { title: "Avoid delisting", description: "Companies that fail to file annual returns risk penalties and eventual striking off the CAC register." },
-      { title: "Clean due diligence", description: "Investors and banks check your CAC status report before funding — keep it spotless." },
-      { title: "Change with confidence", description: "Add directors, change addresses, increase share capital or transfer shares correctly." },
-      { title: "One less thing to track", description: "We monitor deadlines and remind you before anything is due." },
-    ],
-    process: [
-      { title: "Compliance audit", description: "We pull your CAC status report and identify outstanding filings." },
-      { title: "Remediation", description: "We file overdue annual returns and settle penalties where applicable." },
-      { title: "Updates", description: "We process any director, address, share or object changes you need." },
-      { title: "Monitoring", description: "We maintain your registers and alert you ahead of each deadline." },
-    ],
-    packages: [
-      { name: "Annual Return", price: "₦50,000", timeline: "5–10 working days", features: ["One financial year filing", "CAC status report", "Penalty computation"] },
-      { name: "Compliance Care", price: "₦180,000/yr", timeline: "Ongoing", features: ["Annual returns filed", "2 post-incorporation changes", "Statutory registers maintained", "Deadline monitoring"], highlight: true },
-      { name: "Corporate Secretary", price: "₦350,000/yr", timeline: "Ongoing", features: ["Everything in Compliance Care", "Board resolutions drafted", "Unlimited CAC changes", "Quarterly compliance review"] },
-    ],
-    faqs: [
-      { q: "When are CAC annual returns due?", a: "Companies must file within 42 days of their annual general meeting; business names file by 30 June each year after the first." },
-      { q: "What happens if I never filed?", a: "Penalties accrue per year outstanding. We compute the total, file all outstanding years and restore your good standing." },
-      { q: "Can you act as our company secretary?", a: "Yes — our Corporate Secretary package covers resolutions, registers and all CAC correspondence." },
-    ],
-  },
-  {
     slug: "trademark-registration",
     category: "Registration",
     title: "Trademark Registration in Nigeria",
@@ -263,6 +307,169 @@ export const services: Service[] = [
       { q: "How long does a Nigerian trademark last?", a: "Seven years from the filing date, renewable every 14 years thereafter." },
       { q: "Can I use ™ before registration?", a: "Yes. ™ can be used from filing; ® may only be used once the certificate is issued." },
       { q: "Do I need to register in multiple classes?", a: "Only if you trade across distinct categories — for example apparel and cosmetics. We advise during the search stage." },
+    ],
+  },
+  {
+    slug: "annual-returns",
+    category: "Compliance",
+    hasEstimator: true,
+    title: "CAC Annual Returns",
+    shortTitle: "Annual Returns",
+    tagline: "Clear what you owe — get an instant estimate before you call",
+    summary:
+      "Filing overdue or current-year CAC annual returns. Use the estimator below to see what you owe before speaking to anyone.",
+    icon: ShieldCheck,
+    startingPrice: "₦20,000/year",
+    timeline: "5–10 working days",
+    metaTitle: "CAC Annual Returns Nigeria | Instant Estimate — TidyBiz",
+    metaDescription:
+      "File overdue or current CAC annual returns. Get an instant estimate for what you owe by company size and years outstanding, then let TidyBiz handle the filing.",
+    heroPoints: [
+      "Instant estimate — no call needed to know what you owe",
+      "Flat rate for 1–10 years outstanding",
+      "We handle years 11+ with a manual review, not guesswork",
+    ],
+    benefits: [
+      { title: "Know before you call", description: "Get a straight number for what you owe based on company size and years outstanding — no stress, no guessing." },
+      { title: "Avoid delisting", description: "Companies that fail to file annual returns risk penalties and eventual striking off the CAC register." },
+      { title: "Clean due diligence", description: "Investors and banks check your CAC status report before funding — keep it spotless." },
+      { title: "No judgment, just a fix", description: "Whether it's 1 year or 10, we've handled it before. The goal is getting you current, not dwelling on how you got behind." },
+    ],
+    process: [
+      { title: "Estimate", description: "Use the calculator to see your indicative total by company size and years owed." },
+      { title: "Document check", description: "Big companies provide audited accounts; small companies provide a statement of account." },
+      { title: "Filing", description: "We file all outstanding years with the CAC and settle statutory fees on your behalf." },
+      { title: "Confirmation", description: "You receive confirmation and an updated CAC status report." },
+    ],
+    packages: [
+      { name: "Small company", price: "₦20,000/year", timeline: "5–10 working days", features: ["Share capital ≤ ₦1m", "Statement of account required", "1–10 years, flat rate"] },
+      { name: "Big company", price: "₦30,000/year", timeline: "5–10 working days", features: ["Share capital > ₦1m", "Audited accounts required", "1–10 years, flat rate"], highlight: true },
+      { name: "11+ years outstanding", price: "Custom quote", timeline: "By review", features: ["Manual case review", "Complex or long-outstanding filings", "Quoted after a quick look at your history"] },
+    ],
+    faqs: [
+      { q: "How is the estimate calculated?", a: "It's a flat rate per year owed — ₦20,000/year for a small company (share capital ≤ ₦1m) and ₦30,000/year for a big company (share capital > ₦1m) — for 1 to 10 years outstanding." },
+      { q: "What if I owe more than 10 years?", a: "We move to a manual quote rather than multiplying the flat rate indefinitely — long-outstanding cases often carry extra complexity worth reviewing properly." },
+      { q: "Does the estimate include CAC's own penalties?", a: "The estimate reflects TidyBiz's service fee. CAC's own statutory penalties are confirmed separately once we pull your filing history — we'll never surprise you with an unexplained total." },
+      { q: "What documents do I need?", a: "Big companies need audited accounts; small companies need a statement of account, for each outstanding year." },
+    ],
+  },
+  {
+    slug: "status-report",
+    category: "Compliance",
+    title: "CAC Status Report",
+    shortTitle: "Status Report",
+    tagline: "An official snapshot of your company's standing with the CAC",
+    summary: "A current CAC status report — often requested by banks, investors or partners doing due diligence.",
+    icon: ClipboardCheck,
+    startingPrice: "₦20,000",
+    timeline: "3–5 working days",
+    metaTitle: "CAC Status Report Nigeria — TidyBiz",
+    metaDescription: "Get an official CAC status report for your Nigerian company or business name, starting at ₦20,000.",
+    heroPoints: ["Official CAC-issued document", "Confirms directors, shareholding and standing", "Common requirement for banks and investors"],
+    benefits: [
+      { title: "Due diligence ready", description: "Hand over an official document rather than a verbal assurance." },
+      { title: "Fast turnaround", description: "Typically ready within a few working days." },
+      { title: "No surprises", description: "If your status reveals outstanding filings, we'll tell you before you're asked to explain it to a bank." },
+    ],
+    process: [
+      { title: "Request", description: "We pull your current status directly from the CAC register." },
+      { title: "Review", description: "We flag anything that needs attention before you share the report." },
+      { title: "Delivery", description: "You receive the official report, digitally." },
+    ],
+    packages: [
+      { name: "Status Report", price: "₦20,000", timeline: "3–5 working days", features: ["Official CAC status report", "Review of any flagged issues"] },
+    ],
+    faqs: [
+      { q: "What pushes the price above ₦20,000?", a: "The base fee covers a standard company or business name. More complex historical searches may cost more — we'll always confirm before proceeding." },
+      { q: "Who typically needs this?", a: "Banks opening corporate accounts, investors during due diligence, and buyers in an acquisition." },
+    ],
+  },
+  {
+    slug: "status-change",
+    category: "Compliance",
+    title: "CAC Status Change (Inactive → Active)",
+    shortTitle: "Status Change",
+    tagline: "Bring your company or business name back to active status",
+    summary: "Restore your CAC record from inactive to active status so you can transact and file normally again.",
+    icon: RefreshCw,
+    startingPrice: "₦20,000",
+    timeline: "5–10 working days",
+    metaTitle: "CAC Status Change: Inactive to Active — TidyBiz",
+    metaDescription: "Restore your Nigerian company or business name from inactive to active status with the CAC, starting at ₦20,000.",
+    heroPoints: ["Restores your ability to transact and file", "Handled end to end with the CAC", "Often paired with outstanding annual returns"],
+    benefits: [
+      { title: "Reopen the door", description: "An inactive status blocks banking, contracts and further CAC filings until resolved." },
+      { title: "Handled together with returns", description: "Status changes are frequently tied to unfiled annual returns — we handle both in one engagement where needed." },
+    ],
+    process: [
+      { title: "Diagnosis", description: "We confirm why the record shows inactive and what's needed to reverse it." },
+      { title: "Filing", description: "We file the required change with the CAC." },
+      { title: "Confirmation", description: "You receive confirmation once your status reads active again." },
+    ],
+    packages: [
+      { name: "Status Change", price: "₦20,000", timeline: "5–10 working days", features: ["Diagnosis", "CAC filing", "Confirmation of active status"] },
+    ],
+    faqs: [
+      { q: "What pushes the price above ₦20,000?", a: "If outstanding annual returns are also required to reactivate your record, those are quoted separately using the annual returns estimator." },
+      { q: "Why did my company go inactive?", a: "Most commonly, unfiled annual returns over an extended period. We'll confirm the exact reason once we pull your record." },
+    ],
+  },
+  {
+    slug: "director-shareholder-changes",
+    category: "Compliance",
+    title: "Director & Shareholder Changes",
+    shortTitle: "Director/Shareholder Changes",
+    tagline: "Add, remove or update directors and shareholders correctly",
+    summary: "Post-incorporation changes to your company's directors or shareholders, filed correctly with the CAC.",
+    icon: Users,
+    startingPrice: "Price on request",
+    timeline: "5–10 working days",
+    metaTitle: "Director & Shareholder Changes Nigeria — TidyBiz",
+    metaDescription: "Add or remove directors and shareholders, or update shareholding, with correct CAC filing handled by TidyBiz.",
+    heroPoints: ["Addition or removal of directors", "Addition or removal of shareholders", "Filed correctly the first time"],
+    benefits: [
+      { title: "Avoid disputes later", description: "Incorrectly filed changes cause real problems during due diligence or disputes — get it right the first time." },
+      { title: "One point of contact", description: "We handle the CAC filing so you're not navigating the portal yourself." },
+    ],
+    process: [
+      { title: "Details collection", description: "We collect the required resolutions, IDs and consent documents." },
+      { title: "Filing", description: "We file the change with the CAC." },
+      { title: "Confirmation", description: "You receive updated CAC records reflecting the change." },
+    ],
+    packages: [
+      { name: "Director/Shareholder Change", price: "Price on request", timeline: "5–10 working days", features: ["Consultation on required documents", "CAC filing", "Updated company records"] },
+    ],
+    faqs: [
+      { q: "Is this priced flat or by company size?", a: "This is quoted per transaction after a quick look at what's changing — get in touch and we'll confirm before any work starts." },
+    ],
+  },
+  {
+    slug: "business-cessation",
+    category: "Compliance",
+    title: "Closing a Business (Cessation)",
+    shortTitle: "Business Closure",
+    tagline: "Formally close a business name or wind down a company with the CAC",
+    summary: "The mirror of registration — formally ceasing a business name or beginning voluntary striking-off for a company.",
+    icon: Archive,
+    startingPrice: "Price on request",
+    timeline: "Varies by entity type",
+    metaTitle: "Close a Business in Nigeria (CAC Cessation) — TidyBiz",
+    metaDescription: "Formally close a Nigerian business name or begin voluntary company striking-off with the CAC, handled by TidyBiz.",
+    heroPoints: ["Formal closure, not just walking away", "Avoids future penalties on a business you've stopped running", "Handled end to end with the CAC"],
+    benefits: [
+      { title: "Stop the clock", description: "An unclosed business name or company keeps accruing annual return obligations — closing it formally stops that." },
+      { title: "Clean exit", description: "A properly closed record protects you if you register a new business later." },
+    ],
+    process: [
+      { title: "Status check", description: "We confirm your current standing and any filings needed before closure can proceed." },
+      { title: "Filing", description: "We file the cessation or striking-off application with the CAC." },
+      { title: "Confirmation", description: "You receive confirmation once the closure is on record." },
+    ],
+    packages: [
+      { name: "Business Closure", price: "Price on request", timeline: "Varies by entity type", features: ["Status check", "CAC filing", "Confirmation of closure"] },
+    ],
+    faqs: [
+      { q: "Do I need to be up to date on annual returns first?", a: "Usually yes — outstanding returns typically need resolving before a clean closure. We'll confirm this during the status check." },
     ],
   },
   {
@@ -384,11 +591,26 @@ export const services: Service[] = [
 export const getService = (slug?: string) => services.find((s) => s.slug === slug);
 
 export const registrationServices = services.filter((s) => s.category === "Registration");
+export const complianceServices = services.filter((s) => s.category === "Compliance");
 export const brandServices = services.filter((s) => s.category === "Brand");
 
-/** Pillar base path for a category — the two-pillar site structure. */
-export const categoryPath = (category: Service["category"]) =>
-  category === "Registration" ? "/registration" : "/branding";
+const CATEGORY_PATHS: Record<Service["category"], string> = {
+  Registration: "/registration",
+  Compliance: "/compliance",
+  Brand: "/branding",
+};
+
+const CATEGORY_LABELS: Record<Service["category"], string> = {
+  Registration: "Registration",
+  Compliance: "Stay Compliant",
+  Brand: "Branding",
+};
+
+/** Pillar base path for a category — the three-pillar site structure. */
+export const categoryPath = (category: Service["category"]) => CATEGORY_PATHS[category];
+
+/** Display label for a category, used in breadcrumbs and nav. */
+export const categoryLabel = (category: Service["category"]) => CATEGORY_LABELS[category];
 
 /** Canonical URL for a single service, nested under its pillar. */
 export const servicePath = (service: Pick<Service, "slug" | "category">) =>

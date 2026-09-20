@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Calculator } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '@/components/Seo';
 import Hero from '@/components/Hero';
@@ -27,11 +27,11 @@ const homeFaqs = [
   },
   {
     q: 'Do I need to visit your office?',
-    a: 'No. The entire process is handled remotely via email and WhatsApp. We are based in Abuja and can meet in person if you prefer.',
+    a: 'No. The entire process is handled remotely via email and WhatsApp, wherever you are.',
   },
   {
-    q: 'Do you work with businesses outside Abuja?',
-    a: 'We serve founders across Nigeria and Nigerian companies owned from abroad. CAC registration is federal, so your location does not restrict anything.',
+    q: 'Do you work with businesses outside Nigeria?',
+    a: "Yes — we work regularly with Nigerian founders based abroad. CAC registration is federal, so your location doesn't restrict anything, and we're set up to handle the whole process remotely.",
   },
 ];
 
@@ -91,11 +91,37 @@ const Index = () => {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
+              to="/compliance"
+              className="group inline-flex items-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full font-bold hover:border-primary hover:text-primary transition-colors"
+            >
+              Explore Stay Compliant
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
               to="/branding"
               className="group inline-flex items-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full font-bold hover:border-primary hover:text-primary transition-colors"
             >
               Explore Branding
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="mt-6 max-w-3xl mx-auto bg-slate-900 rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4 text-left">
+              <div className="w-11 h-11 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <Calculator className="text-primary" size={20} />
+              </div>
+              <div>
+                <p className="text-white font-bold">Not sure what you owe?</p>
+                <p className="text-slate-400 text-sm">Get an instant annual returns estimate — no pressure, no obligation.</p>
+              </div>
+            </div>
+            <Link
+              to="/compliance"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold hover:opacity-90 transition-opacity whitespace-nowrap"
+            >
+              Get an instant estimate
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>

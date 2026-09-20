@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle, FileCheck, Palette, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle, FileCheck, ShieldCheck, Palette, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -44,8 +44,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* The Two Pillars */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {/* The Three Pillars */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="group relative bg-white/70 backdrop-blur-xl p-8 lg:p-10 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 hover:border-primary/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
             <div className="absolute top-0 right-0 p-6">
               <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Pillar 01</span>
@@ -74,9 +74,37 @@ const Hero = () => {
             </Link>
           </div>
 
+          <div className="group relative bg-white/70 backdrop-blur-xl p-8 lg:p-10 rounded-3xl border border-primary/30 shadow-xl shadow-slate-200/50 hover:border-primary/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
+            <div className="absolute top-0 right-0 p-6">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">New — Pillar 02</span>
+            </div>
+            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+              <ShieldCheck className="text-primary group-hover:text-primary-foreground transition-colors" size={28} />
+            </div>
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">Stay Compliant</h2>
+            <p className="text-slate-600 mb-8">
+              Annual returns, status reports and post-incorporation changes. See an instant estimate before you call.
+            </p>
+            <ul className="space-y-3 mb-10">
+              {['Instant annual returns estimate', 'Status report & status change', 'Director/shareholder updates'].map((t) => (
+                <li key={t} className="flex items-center text-sm text-slate-600 font-medium">
+                  <CheckCircle className="text-primary mr-3 flex-shrink-0" size={16} />
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/compliance"
+              className="w-full py-4 bg-primary text-primary-foreground font-bold rounded-xl hover:opacity-90 transition-all flex items-center justify-center group/btn"
+            >
+              Get my estimate
+              <ArrowRight className="ml-2 group-hover/btn:translate-x-1 transition-transform" size={18} />
+            </Link>
+          </div>
+
           <div className="group relative bg-white/70 backdrop-blur-xl p-8 lg:p-10 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 hover:border-primary/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300">
             <div className="absolute top-0 right-0 p-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Pillar 02</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Pillar 03</span>
             </div>
             <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
               <Palette className="text-primary group-hover:text-primary-foreground transition-colors" size={28} />

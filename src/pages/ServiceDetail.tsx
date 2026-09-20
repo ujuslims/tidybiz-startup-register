@@ -5,7 +5,8 @@ import SectionHeading from '@/components/site/SectionHeading';
 import FaqList from '@/components/site/FaqList';
 import CtaSection from '@/components/site/CtaSection';
 import ServiceCard from '@/components/site/ServiceCard';
-import { getService, services, servicePath, categoryPath, type Service } from '@/data/services';
+import AnnualReturnsEstimator from '@/components/site/AnnualReturnsEstimator';
+import { getService, services, servicePath, categoryPath, categoryLabel, type Service } from '@/data/services';
 
 type ServiceDetailProps = {
   /** Which pillar this route belongs to — /registration/:slug vs /branding/:slug. */
@@ -21,7 +22,7 @@ const ServiceDetail = ({ category }: ServiceDetailProps) => {
 
   const related = services.filter((s) => s.slug !== service.slug && s.category === service.category).slice(0, 3);
   const path = servicePath(service);
-  const pillarLabel = service.category === 'Registration' ? 'Registration' : 'Branding';
+  const pillarLabel = categoryLabel(service.category);
 
   return (
     <>
@@ -80,10 +81,10 @@ const ServiceDetail = ({ category }: ServiceDetailProps) => {
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a
-                  href="#packages"
+                  href={service.hasEstimator ? '#estimate' : '#packages'}
                   className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 border border-slate-200 px-7 py-4 rounded-full font-bold hover:border-primary hover:text-primary transition-colors"
                 >
-                  See packages
+                  {service.hasEstimator ? 'Get your estimate' : 'See packages'}
                 </a>
               </div>
             </div>
@@ -161,12 +162,22 @@ const ServiceDetail = ({ category }: ServiceDetailProps) => {
         </div>
       </section>
 
+      {/* Live estimator, for services priced by one rather than fixed packages */}
+      {service.hasEstimator && (
+        <section id="estimate" className="py-20 lg:py-24 bg-slate-50 scroll-mt-24">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionHeading eyebrow="Get your number" title="Instant estimate" />
+            <AnnualReturnsEstimator />
+          </div>
+        </section>
+      )}
+
       {/* Packages */}
       <section id="packages" className="py-20 lg:py-24 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Pricing"
-            title="Packages & pricing"
+            title={service.hasEstimator ? 'How the pricing breaks down' : 'Packages & pricing'}
             description="Transparent Naira pricing. Statutory CAC or registry fees, where applicable, are quoted upfront before work begins."
           />
           <div className="grid md:grid-cols-3 gap-6">

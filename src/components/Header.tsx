@@ -1,11 +1,12 @@
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { registrationServices, brandServices, servicePath } from '@/data/services';
+import { registrationServices, complianceServices, brandServices, servicePath } from '@/data/services';
 
-/** Two pillar dropdowns (Registration, Branding) plus the site's other top-level pages. */
+/** Three pillar dropdowns (Registration, Stay Compliant, Branding) plus the site's other top-level pages. */
 const pillars = [
   { label: 'Registration', to: '/registration', services: registrationServices },
+  { label: 'Stay Compliant', to: '/compliance', services: complianceServices },
   { label: 'Branding', to: '/branding', services: brandServices },
 ] as const;
 

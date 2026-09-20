@@ -5,6 +5,7 @@ import SectionHeading from '@/components/site/SectionHeading';
 import ServiceCard from '@/components/site/ServiceCard';
 import FaqList from '@/components/site/FaqList';
 import CtaSection from '@/components/site/CtaSection';
+import BnVsLlcComparison from '@/components/site/BnVsLlcComparison';
 import { registrationServices } from '@/data/services';
 
 const registrationFaqs = [
@@ -100,6 +101,17 @@ const Registration = () => (
             <ServiceCard key={s.slug} service={s} />
           ))}
         </div>
+      </div>
+    </section>
+
+    <section className="py-20 lg:py-28 bg-white">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Before you decide"
+          title="Not sure which structure fits?"
+          description="A short, honest comparison — not a sales pitch for either option."
+        />
+        <BnVsLlcComparison />
       </div>
     </section>
 

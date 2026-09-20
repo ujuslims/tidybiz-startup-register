@@ -6,8 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Index from "./pages/Index";
 import Registration from "./pages/Registration";
+import StayCompliant from "./pages/StayCompliant";
 import Branding from "./pages/Branding";
 import ServiceDetail from "./pages/ServiceDetail";
+import OrderAnnualReturns from "./pages/OrderAnnualReturns";
 import Pricing from "./pages/Pricing";
 import Resources from "./pages/Resources";
 import About from "./pages/About";
@@ -27,6 +29,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/registration/:slug" element={<ServiceDetail category="Registration" />} />
+            <Route path="/compliance" element={<StayCompliant />} />
+            <Route path="/compliance/annual-returns/order" element={<OrderAnnualReturns />} />
+            <Route path="/compliance/:slug" element={<ServiceDetail category="Compliance" />} />
             <Route path="/branding" element={<Branding />} />
             <Route path="/branding/:slug" element={<ServiceDetail category="Brand" />} />
             <Route path="/pricing" element={<Pricing />} />
