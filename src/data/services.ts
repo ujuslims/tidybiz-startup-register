@@ -12,6 +12,7 @@ import {
   RefreshCw,
   Users,
   Archive,
+  HeartHandshake,
   type LucideIcon,
 } from "lucide-react";
 
@@ -231,6 +232,47 @@ export const services: Service[] = [
       { q: "Business name or limited company?", a: "A business name is faster and cheaper but offers no limited liability. If you plan to raise funding, hire at scale or sign large contracts, incorporate an LTD instead." },
       { q: "How long is registration valid?", a: "A CAC business name registration does not expire, but you must file an annual return to stay in good standing." },
       { q: "Can I upgrade later?", a: "Yes. Many founders start with a business name and incorporate an LTD later — we handle the transition and re-branding." },
+    ],
+  },
+  {
+    slug: "incorporated-trustees-ngo",
+    category: "Registration",
+    title: "Incorporated Trustees (NGO) Registration",
+    shortTitle: "NGO / Incorporated Trustees",
+    tagline: "Register a foundation, association or religious body with the CAC",
+    summary:
+      "Incorporated Trustees registration for NGOs, foundations, religious bodies and community associations — a distinct CAC pathway from company or business name registration.",
+    icon: HeartHandshake,
+    startingPrice: "₦60,000",
+    timeline: "3–6 weeks",
+    metaTitle: "Incorporated Trustees (NGO) Registration Nigeria — TidyBiz",
+    metaDescription:
+      "Register your NGO, foundation, association or religious organisation as an Incorporated Trustee with the CAC. Constitution drafting, publication and certificate handled end to end.",
+    heroPoints: [
+      "Constitution drafted to CAC requirements",
+      "Newspaper publication handled for you",
+      "Certificate of incorporation as Trustees",
+    ],
+    benefits: [
+      { title: "Legal recognition", description: "An Incorporated Trustees certificate lets your organisation open bank accounts, receive grants and sign agreements in its own name." },
+      { title: "Grant and donor ready", description: "Most institutional donors and grant bodies require proof of incorporation before releasing funds." },
+      { title: "Built for your mission", description: "Different from a company or business name — we register the structure that actually fits an NGO, foundation or association." },
+      { title: "Ongoing good standing", description: "Like companies, Incorporated Trustees must file annual returns — we can keep you current under our Stay Compliant services." },
+    ],
+    process: [
+      { title: "Name & objects", description: "We confirm your proposed name and clarify your organisation's objects for CAC approval." },
+      { title: "Constitution drafting", description: "We draft your constitution to CAC requirements, covering governance, trustees and objects." },
+      { title: "Publication", description: "We handle the required newspaper publication of your intent to incorporate." },
+      { title: "Filing & certificate", description: "We file with the CAC and deliver your certificate of incorporation." },
+    ],
+    packages: [
+      { name: "Standard NGO", price: "₦60,000", timeline: "3–6 weeks", features: ["Name search", "Constitution drafting", "Newspaper publication", "Certificate of incorporation"] },
+      { name: "NGO + Compliance Start", price: "₦95,000", timeline: "3–6 weeks", features: ["Everything in Standard", "First-year annual return guidance", "Trustee changes support"], highlight: true },
+    ],
+    faqs: [
+      { q: "How is this different from company registration?", a: "Incorporated Trustees is a distinct CAC pathway for non-profit purposes — NGOs, foundations, religious and community bodies — with a constitution rather than a MEMART, and trustees rather than directors/shareholders." },
+      { q: "How long does it take?", a: "Typically 3–6 weeks, largely driven by the mandatory newspaper publication period before filing can be completed." },
+      { q: "Do NGOs file annual returns too?", a: "Yes — Incorporated Trustees must file annual returns with the CAC just like companies. We can handle this through our Stay Compliant services once you're registered." },
     ],
   },
   {
